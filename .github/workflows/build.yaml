@@ -40,7 +40,7 @@ jobs:
       - name: Cleanup Artifacts for Windows 🧹
         if: matrix.os == 'windows-latest'
         run: |
-          npx del-cli "build/*" "!build/*.exe" "!build/*.zip" "!build/*.yml"
+          npx del-cli "build/*" "!build/*.exe" "!build/*.msi" "!build/*.zip" "!build/*.yml"
 
       - name: upload artifacts 🔨
         uses: actions/upload-artifact@v4
