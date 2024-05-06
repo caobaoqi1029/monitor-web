@@ -18,37 +18,37 @@ jobs:
         os: [windows-latest]
 
     steps:
-      - name: Check out git repository
+      - name: Check out git repository 🎶
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Install Node.js 💖
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install Dependencies
+      - name: Install Dependencies 😁
         run: |
           npm i -g yarn
           yarn install
 
-      - name: Build Electron App for windows
+      - name: Build Electron App for windows 😂
         if: matrix.os == 'windows-latest'
         run: yarn run electron:build
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Cleanup Artifacts for Windows
+      - name: Cleanup Artifacts for Windows 🧹
         if: matrix.os == 'windows-latest'
         run: |
           npx del-cli "build/*" "!build/*.exe" "!build/*.zip" "!build/*.yml"
 
-      - name: upload artifacts
+      - name: upload artifacts 🔨
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}
           path: build
 
-      - name: release
+      - name: release 😶‍🌫️
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
